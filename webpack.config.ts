@@ -1,0 +1,42 @@
+import path from 'path';
+import type {Configuration} from 'webpack';
+
+
+const config: Configuration = {
+  entry:  './src/Main.tsx',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  watchOptions: {
+    aggregateTimeout: 200,
+    poll: 1000,
+  }
+}
+
+export default function(env,argv):Configuration{
+
+  if (argv.mode === 'development') {
+    config.devtool = 'eval-source-map';
+    config.watch = true;
+    config.mode = 'development';
+  } else {
+    config.mode = 'production';
+  }
+
+
+  return config;
+
+}
