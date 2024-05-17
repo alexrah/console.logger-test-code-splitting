@@ -4,6 +4,17 @@ import logger from '@alexrah/logger';
 
 
 function App() {
+
+  window.env = {} ;
+
+  // window.env.LOG_ROCKET_ID = 'idypwt/loggerdev';
+
+  const lg = new logger();
+
+  lg.i('Logger updated to 5.2.0!!!');
+
+  console.info('testing logrocket');
+
   return (
     <h1>Logger: Bundle Analyzer app</h1>
   )
