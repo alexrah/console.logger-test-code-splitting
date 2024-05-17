@@ -7,7 +7,7 @@ function App() {
 
   window.env = {} ;
 
-  // window.env.LOG_ROCKET_ID = 'idypwt/loggerdev';
+  // window.env.LOG_ROCKET_ID = '';
 
   const lg = new logger();
 
