@@ -1,9 +1,10 @@
 import path from 'path';
 import type {Configuration} from 'webpack';
+import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 
 
 const config: Configuration = {
-  entry:  './src/Main.tsx',
+  entry:  './src/App.tsx',
   module: {
     rules: [
       {
@@ -29,11 +30,18 @@ const config: Configuration = {
 export default function(env,argv):Configuration{
 
   if (argv.mode === 'development') {
+
     config.devtool = 'eval-source-map';
     config.watch = true;
     config.mode = 'development';
+
   } else {
+
     config.mode = 'production';
+    config.plugins = [
+      new BundleAnalyzerPlugin()
+    ];
+
   }
 
 
